@@ -31,6 +31,15 @@
 <br />
 <br />
 
+<h2 style="font-weight:300">💬 Changes</h2>
+
+-   I'm using **Styled Components** instead **Sass**;
+-   In **Home** and **New Room** page, I reuse the layout creating another page with sub-routing (`AuthPages`):
+    -   This way the **Home** and **New Room** only contains de form and logo
+
+<br />
+<br />
+
 <h2 style="font-weight:300">How to fix <strong>Husky</strong> to run hooks:</h2>
 
 In `package.json` add on scripts:

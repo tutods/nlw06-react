@@ -1,5 +1,4 @@
 import { flexAlignment, flexSettings } from 'assets/styles/mixins';
-import Letmeask from 'components/Letmeask';
 import { ThemeSwitch } from 'components/ThemeSwitch';
 import styled from 'styled-components';
 
