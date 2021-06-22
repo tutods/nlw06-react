@@ -12,6 +12,9 @@
   	<a href="#">
   		<img src="https://img.shields.io/badge/React%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=61DAFB" alt="React"/>
 	</a>
+  	<a href="#">
+  		<img src="https://img.shields.io/badge/Rirebase%20-%2320232a.svg?&style=for-the-badge&logo=firebase&logoColor=FFCA28" alt="Firebase"/>
+	</a>
 	<a href="#">
 		<img src="https://img.shields.io/badge/typescript%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
 	</a>
