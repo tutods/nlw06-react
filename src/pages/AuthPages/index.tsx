@@ -7,9 +7,9 @@ import {
 	AsideParagraph,
 	AsideTitle,
 	Container,
+	CustomThemeSwitch,
 	Logo,
-	Main,
-	CustomThemeSwitch
+	Main
 } from './styles';
 
 const AuthPages = () => {

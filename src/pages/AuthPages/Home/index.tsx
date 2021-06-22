@@ -2,18 +2,25 @@ import Button from 'components/Button';
 import { FaGoogle } from 'react-icons/fa';
 import { FiLogIn } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
+import { auth, firebase } from 'utils/services/firebase';
 import { Container, Divider, EnterForm, RoomButton } from './styles';
 
 const Home = () => {
 	const history = useHistory();
 
-	const navigateToNewRoom = () => {
-		history.push('/rooms/new');
+	const handleCreateRoom = () => {
+		const provider = new firebase.auth.GoogleAuthProvider();
+
+		auth.signInWithPopup(provider).then((res) => {
+			console.log(res);
+
+			history.push('/rooms/new');
+		});
 	};
 
 	return (
 		<Container>
-			<RoomButton onClick={navigateToNewRoom}>
+			<RoomButton onClick={handleCreateRoom}>
 				<FaGoogle />
 				Crie sua sala com o Google
 			</RoomButton>
