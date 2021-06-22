@@ -1,11 +1,12 @@
+import { ThemeModeProvider } from 'contexts/ThemeModeContext';
 import App from 'pages/App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'utils/services/firebase';
 
 ReactDOM.render(
-	<React.StrictMode>
+	<ThemeModeProvider>
 		<App />
-	</React.StrictMode>,
+	</ThemeModeProvider>,
 	document.getElementById('root')
 );
