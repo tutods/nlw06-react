@@ -13,7 +13,7 @@ export const darkTheme = {
 
 		google: '#EA4335',
 
-		green: { 500: '#04D361' },
+		danger: '#E73F5D',
 
 		gray: {
 			50: '#F7F8FA',

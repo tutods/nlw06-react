@@ -14,7 +14,7 @@ declare module 'styled-components' {
 
 			google: string;
 
-			green: { 500: string };
+			danger: string;
 
 			gray: {
 				50: string;
