@@ -1,5 +1,6 @@
 import Button from 'components/Button';
 import { Link } from 'react-router-dom';
+import { useAuth } from 'utils/hooks/useAuth';
 import {
 	BottomParagraph,
 	Container,
@@ -9,6 +10,8 @@ import {
 } from './styles';
 
 const NewRoom = () => {
+	const { user } = useAuth();
+
 	return (
 		<Container>
 			<Logo />

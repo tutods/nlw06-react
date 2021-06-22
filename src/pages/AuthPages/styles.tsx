@@ -1,5 +1,6 @@
 import { flexAlignment, flexSettings } from 'assets/styles/mixins';
 import { ThemeSwitch } from 'components/ThemeSwitch';
+import { shade } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -34,9 +35,10 @@ export const AsideTitle = styled.strong`
 export const AsideParagraph = styled.p`
 	/* margin-top: 16px; */
 
-	color: ${({ theme }) => theme.colors.gray[200]};
+	color: ${({ theme }) => shade(0.1, theme.colors.gray[100])};
 	font-size: 24px;
 	line-height: 32px;
+	font-weight: 300;
 `;
 
 export const Main = styled.main`

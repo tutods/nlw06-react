@@ -1,12 +1,11 @@
-import { useContext } from 'react';
-
 import {
 	ThemeModeContext,
 	ThemeModeContextProps
 } from 'contexts/ThemeModeContext';
+import { useContext } from 'react';
 
-export function useTheme(): ThemeModeContextProps {
+export const useTheme = (): ThemeModeContextProps => {
 	const context = useContext(ThemeModeContext);
 
 	return context;
-}
+};

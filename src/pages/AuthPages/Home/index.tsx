@@ -2,20 +2,20 @@ import Button from 'components/Button';
 import { FaGoogle } from 'react-icons/fa';
 import { FiLogIn } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
-import { auth, firebase } from 'utils/services/firebase';
-import { Container, Logo, Divider, EnterForm, RoomButton } from './styles';
+import { useAuth } from 'utils/hooks/useAuth';
+import { Container, Divider, EnterForm, Logo, RoomButton } from './styles';
 
 const Home = () => {
+	const { user, signInWithGoogle } = useAuth();
 	const history = useHistory();
 
-	const handleCreateRoom = () => {
-		const provider = new firebase.auth.GoogleAuthProvider();
+	const handleCreateRoom = async () => {
+		if (!user) {
+			await signInWithGoogle();
+		}
 
-		auth.signInWithPopup(provider).then((res) => {
-			console.log(res);
-
-			history.push('/rooms/new');
-		});
+		// Redirect after Sign In
+		history.push('/rooms/new');
 	};
 
 	return (
