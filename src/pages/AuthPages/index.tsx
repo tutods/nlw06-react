@@ -8,7 +8,6 @@ import {
 	AsideTitle,
 	Container,
 	CustomThemeSwitch,
-	Logo,
 	Main
 } from './styles';
 
@@ -28,14 +27,11 @@ const AuthPages = () => {
 				</AsideParagraph>
 			</Aside>
 			<Main>
-				<div>
-					<Logo />
-					<Switch>
-						<Route path={'/'} component={Home} exact />
+				<Switch>
+					<Route path={'/'} component={Home} exact />
 
-						<Route path={'/rooms/new'} component={NewRoom} />
-					</Switch>
-				</div>
+					<Route path={'/rooms/new'} component={NewRoom} />
+				</Switch>
 			</Main>
 		</Container>
 	);

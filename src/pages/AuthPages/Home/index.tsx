@@ -3,7 +3,7 @@ import { FaGoogle } from 'react-icons/fa';
 import { FiLogIn } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
 import { auth, firebase } from 'utils/services/firebase';
-import { Container, Divider, EnterForm, RoomButton } from './styles';
+import { Container, Logo, Divider, EnterForm, RoomButton } from './styles';
 
 const Home = () => {
 	const history = useHistory();
@@ -20,6 +20,8 @@ const Home = () => {
 
 	return (
 		<Container>
+			<Logo />
+
 			<RoomButton onClick={handleCreateRoom}>
 				<FaGoogle />
 				Crie sua sala com o Google

@@ -1,4 +1,5 @@
 import { flexAlignment, flexSettings } from 'assets/styles/mixins';
+import Letmeask from 'components/Letmeask';
 import { shade } from 'polished';
 import styled from 'styled-components';
 
@@ -10,6 +11,13 @@ export const Container = styled.div`
 	max-width: 320px;
 
 	text-align: center;
+`;
+
+export const Logo = styled(Letmeask)`
+	width: 150px;
+	height: auto;
+
+	align-self: center;
 `;
 
 export const RoomButton = styled.button`

@@ -47,7 +47,7 @@ export const Main = styled.main`
 
 	padding: 32px;
 
-	> div {
+	/* > div {
 		${flexSettings('column')};
 		align-items: stretch;
 
@@ -55,14 +55,7 @@ export const Main = styled.main`
 		max-width: 320px;
 
 		text-align: center;
-	}
-`;
-
-export const Logo = styled(Letmeask)`
-	width: 150px;
-	height: auto;
-
-	align-self: center;
+	} */
 `;
 
 export const CustomThemeSwitch = styled(ThemeSwitch)`
