@@ -1,49 +1,86 @@
-# Getting Started with Create React App
+<div align="center">
+<a href=#"><img src="./letmeask.jpg" alt="Letmeask" width="800px" /></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br /><br />
 
-## Available Scripts
+<h1 style="font-weight: 300; margin-top: 5px">NLW#06 <strong>React</strong></h1>
+</div>
+<div align="center">This project is created from the <strong>NLW#06</strong> of <strong>React</strong>.</div>
 
-In the project directory, you can run:
+<br />
+<div align="center">
+  	<a href="#">
+  		<img src="https://img.shields.io/badge/React%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=61DAFB" alt="React"/>
+	</a>
+	<a href="#">
+		<img src="https://img.shields.io/badge/typescript%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+	</a>
+	<a href="#">
+		<img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" alt="VS Code" />
+	</a>
+	<a href="https://github.com/TutoDS/nlw06-react/stargazers">
+    	<img alt="Stargazers" src="https://img.shields.io/github/stars/TutoDS/nlw06-react?style=for-the-badge">
+	</a>
+</div>
 
-### `yarn start`
+<br />
+<br />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<h2 style="font-weight:300">How to fix <strong>Husky</strong> to run hooks:</h2>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+In `package.json` add on scripts:
 
-### `yarn test`
+```json
+"postinstall": "husky install",
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+After that run on your terminal:
 
-### `yarn build`
+-   **With Yarn:**
+    -   `yarn husky add .husky/pre-commit "yarn lint-staged"`
+-   **With NPM:**
+    -   `npx husky add .husky/pre-commit "npm lint-staged`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br /><br />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<div align="right" style="margin-top: 50px">
+<h3 style="font-weight: 300">
+🧑🏻‍💻 About Me
+</h3>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<a href="https://github.com/TutoDS" alt="TutoDS">
+<img src="https://github.com/tutods.png" alt="Daniel Sousa @TutoDS" width="100px" style="border-radius: 100%">
+<br />
+ <sub><b>Daniel Sousa @TutoDS</b></sub>
+</a>
 
-### `yarn eject`
+<div style="margin: 20px 0" />
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<a href="https://github.com/TutoDS">
+      <img alt="Github Badge" src="https://img.shields.io/badge/-Github-1E4174?style=for-the-badge&logo=Github&logoColor=white&link=https://github.com/solrachix" />
+</a>
+<a href="https://www.linkedin.com/in/daniel-sousa-tutods/">
+      <img alt="Linkedin" src="https://img.shields.io/badge/Linkedin-1E4174?style=for-the-badge&logo=Linkedin&logoColor=white" />
+</a>
+<a href="https://twitter.com/tutods/">
+      <img alt="Twitter" src="https://img.shields.io/badge/Twitter-1E4174?style=for-the-badge&logo=twitter&logoColor=white" />
+</a>
+<a href="https://facebook.com/tutods2014">
+      <img alt="Facebook" src="https://img.shields.io/badge/Facebook-1E4174?style=for-the-badge&logo=facebook&logoColor=white" />
+</a>
+<br />
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<a href="https://youtube.com/tutods2014">
+      <img alt="YouTube" src="https://img.shields.io/badge/YouTube-1E4174?style=for-the-badge&logo=youtube&logoColor=white" />
+</a>
+<a href="https://instagram.com/tutods2014">
+      <img alt="Instagram" src="https://img.shields.io/badge/Instagram-1E4174?style=for-the-badge&logo=Instagram&logoColor=white" />
+</a>
+<a href="https://gitlab.com/jdaniel.asousa">
+      <img alt="GitLab" src="https://img.shields.io/badge/GitLab-1E4174?style=for-the-badge&logo=GitLab&logoColor=white" />
+</a>
+<a href="https://app.rocketseat.com.br/me/tutods14">
+      <img alt="Rocketseat" src="https://img.shields.io/badge/Rocketseat-1E4174?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAALVBMVEVHcExxWsF0XMJzXMJxWcFsUsD///9jRrzY0u6Xh9Gsn9n39fyMecy0qd2bjNJWBT0WAAAABHRSTlMA2Do606wF2QAAAGlJREFUGJVdj1cWwCAIBLEsRU3uf9xobDH8+GZwUYi8i6ucJwrxKE+7D0G9Q4vlYqtmCSjndr4CgCgzlyFgfKfKCVO0LrPKjmiqMxGXkJwNnXskqWG+1oSM+BSwD8f29YLNjvx/OQrn+g99oQSoNmt3PgAAAABJRU5ErkJggg==" />
+</a>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-
-#together
+</div>
