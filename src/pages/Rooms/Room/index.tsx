@@ -45,7 +45,9 @@ const Room = () => {
 			const databaseRoom = room.val();
 
 			if (!room.exists()) {
-				toast.error(`Sala com o código ${id} não existe!`);
+				toast.error(`Sala com o código ${id} não existe!`, {
+					duration: 5000
+				});
 				history.push('/');
 
 				return;
@@ -75,12 +77,19 @@ const Room = () => {
 		event.preventDefault();
 
 		if (newQuestion.trim() === '') {
-			toast.error('Por favor insira primeiro a sua questão!');
+			toast.error('Por favor insira primeiro a sua questão!', {
+				duration: 5000
+			});
 			return;
 		}
 
 		if (!user) {
-			toast.error('Por favor inicie sessão para publicar a sua questão!');
+			toast.error(
+				'Por favor inicie sessão para publicar a sua questão!',
+				{
+					duration: 5000
+				}
+			);
 			return;
 		}
 
@@ -95,11 +104,17 @@ const Room = () => {
 						</div>
 					),
 					error: <b>Ocorreu um erro ao gravar a sua questão.</b>
+				},
+				{
+					duration: 5000
 				}
 			);
 		} catch (error) {
 			toast.error(
-				'Ocorreu um erro ao enviar a sua questão! Tente novamente mais tarde.'
+				'Ocorreu um erro ao enviar a sua questão! Tente novamente mais tarde.',
+				{
+					duration: 5000
+				}
 			);
 		}
 
