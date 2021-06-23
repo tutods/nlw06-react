@@ -28,6 +28,7 @@ export const lightTheme = {
 	},
 
 	shadows: {
-		default: `0 0 0.8rem ${rgba('#fff', 0.15)}`
+		default: `0 0 0.8rem ${rgba('#fff', 0.15)}`,
+		textarea: `0 4px 12px ${rgba('#000', 0.04)}`
 	}
 };

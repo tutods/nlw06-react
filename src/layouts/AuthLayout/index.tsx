@@ -1,7 +1,5 @@
 import illustrationMedia from 'assets/media/illustration.svg';
-import { Route, Switch } from 'react-router-dom';
-import Home from './Home';
-import NewRoom from './NewRoom';
+import { ReactNode } from 'react';
 import {
 	Aside,
 	AsideParagraph,
@@ -11,9 +9,13 @@ import {
 	Main
 } from './styles';
 
-const AuthPages = () => {
+type Props = {
+	children: ReactNode;
+};
+
+const AuthPages = ({ children, ...props }: Props) => {
 	return (
-		<Container>
+		<Container {...props}>
 			<CustomThemeSwitch />
 			<Aside>
 				<img
@@ -26,13 +28,7 @@ const AuthPages = () => {
 					Tire as dúvidas da sua audiência em tempo-real
 				</AsideParagraph>
 			</Aside>
-			<Main>
-				<Switch>
-					<Route path={'/'} component={Home} exact />
-
-					<Route path={'/rooms/new'} component={NewRoom} />
-				</Switch>
-			</Main>
+			<Main>{children}</Main>
 		</Container>
 	);
 };

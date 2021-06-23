@@ -8,13 +8,13 @@ export type AuthContextProps = {
 	signInWithGoogle: () => Promise<void>;
 };
 
-type UserProviderProps = {
+type AuthproviderProps = {
 	children: ReactNode;
 };
 
 export const AuthContext = createContext({} as AuthContextProps);
 
-export const AuthContextProvider = ({ children }: UserProviderProps) => {
+export const AuthContextProvider = ({ children }: AuthproviderProps) => {
 	const [user, setUser] = useState<UserType>();
 
 	useEffect(() => {
