@@ -1,6 +1,7 @@
 import Button from 'components/buttons/Button';
 import AuthLayout from 'layouts/AuthLayout';
 import { FormEvent, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
 import { FiLogIn } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
@@ -26,13 +27,18 @@ const Home = () => {
 		event.preventDefault();
 
 		if (roomCode.trim() === '') {
+			toast.error('O código de sala introduzido é inválido!', {
+				duration: 5000
+			});
 			return;
 		}
 
 		const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
 		if (!roomRef.exists()) {
-			alert('Room does not exists.');
+			toast.error('O código de sala introduzido é inválido!', {
+				duration: 5000
+			});
 			return;
 		}
 
@@ -41,6 +47,7 @@ const Home = () => {
 
 	return (
 		<AuthLayout>
+			<Toaster position='top-right' reverseOrder={false} />
 			<Container>
 				<Logo />
 

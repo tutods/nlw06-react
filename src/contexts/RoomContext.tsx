@@ -1,4 +1,5 @@
 import { createContext, ReactNode } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { useAuth } from 'utils/hooks/useAuth';
 import { database } from 'utils/services/firebase';
 
@@ -22,6 +23,12 @@ export const RoomContextProvider = ({ children }: RoomProviderProps) => {
 
 	const saveNewQuestion = async ({ question, roomId }: NewQuestionProps) => {
 		if (!user) {
+			toast.error(
+				'Ocorreu um erro ao enviar a sua questão! Tente novamente mais tarde.',
+				{
+					duration: 5000
+				}
+			);
 			return;
 		}
 
@@ -40,6 +47,7 @@ export const RoomContextProvider = ({ children }: RoomProviderProps) => {
 
 	return (
 		<RoomContext.Provider value={{ saveNewQuestion }}>
+			<Toaster position='top-right' reverseOrder={false} />
 			{children}
 		</RoomContext.Provider>
 	);
