@@ -1,4 +1,5 @@
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import AdminRoom from './AdminRoom';
 import NewRoom from './NewRoom';
 import Room from './Room';
 
@@ -8,6 +9,8 @@ const Rooms = () => {
 	return (
 		<Switch>
 			<Route path={`${path}/new`} component={NewRoom} />
+
+			<Route path={`${path}/admin/:id`} component={AdminRoom} />
 
 			<Route path={`${path}/:id`} component={Room} />
 		</Switch>

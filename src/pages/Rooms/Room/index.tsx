@@ -1,16 +1,16 @@
 import Avatar from 'components/Avatar';
 import Button from 'components/buttons/Button';
 import CodeButton from 'components/buttons/CodeButton';
+import IconButton from 'components/buttons/IconButton';
 import QuestionCard from 'components/QuestionCard';
 import { ThemeSwitch } from 'components/ThemeSwitch';
-import { FormEvent, useEffect, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { FormEvent, useState } from 'react';
+import toast from 'react-hot-toast';
+import { BiLike } from 'react-icons/bi';
 import { IoMdPaperPlane } from 'react-icons/io';
-import { useHistory, useParams } from 'react-router-dom';
-import { QuestionType, VectorQuestionType } from 'utils/@types/Room';
+import { useParams } from 'react-router-dom';
 import { useAuth } from 'utils/hooks/useAuth';
 import { useRoom } from 'utils/hooks/useRoom';
-import { database } from 'utils/services/firebase';
 import {
 	Container,
 	Content,
@@ -19,7 +19,7 @@ import {
 	Logo,
 	Main,
 	QuestionForm,
-	QuestionsList,
+	QuestionList,
 	RoomTitle
 } from './styles';
 
@@ -28,50 +28,13 @@ type RoomParams = {
 };
 
 const Room = () => {
+	// Hooks
 	const { id } = useParams<RoomParams>();
 	const { user } = useAuth();
-	const { saveNewQuestion } = useRoom();
-	const history = useHistory();
+	const { saveNewQuestion, questions, title } = useRoom(id);
 
-	const [questions, setQuestions] = useState<QuestionType[]>([]);
-	const [title, setTitle] = useState('');
-
+	// States
 	const [newQuestion, setNewQuestion] = useState<string>('');
-
-	useEffect(() => {
-		const roomRef = database.ref(`rooms/${id}`);
-
-		roomRef.on('value', (room) => {
-			const databaseRoom = room.val();
-
-			if (!room.exists()) {
-				toast.error(`Sala com o código ${id} não existe!`, {
-					duration: 5000
-				});
-				history.push('/');
-
-				return;
-			}
-
-			const firebaseQuestions: VectorQuestionType =
-				databaseRoom.questions ?? {};
-
-			const parsedQuestions = Object.entries(firebaseQuestions).map(
-				([key, value]) => {
-					return {
-						id: key,
-						content: value.content,
-						author: value.author,
-						isHighlighted: value.isHighlighted,
-						isAnswered: value.isAnswered
-					};
-				}
-			);
-
-			setTitle(databaseRoom.title);
-			setQuestions(parsedQuestions);
-		});
-	}, [id, history]);
 
 	const handleSendQuestion = async (event: FormEvent) => {
 		event.preventDefault();
@@ -93,38 +56,36 @@ const Room = () => {
 			return;
 		}
 
-		try {
-			toast.promise(
-				saveNewQuestion({ question: newQuestion, roomId: id }),
-				{
-					loading: 'A guardar a sua questão...',
-					success: (
-						<div>
-							A sua questão foi <b>gravada com sucesso!</b>
-						</div>
-					),
-					error: <b>Ocorreu um erro ao gravar a sua questão.</b>
-				},
-				{
-					duration: 5000
-				}
-			);
-		} catch (error) {
-			toast.error(
-				'Ocorreu um erro ao enviar a sua questão! Tente novamente mais tarde.',
-				{
-					duration: 5000
-				}
-			);
-		}
+		// try {
+		toast.promise(
+			saveNewQuestion({ question: newQuestion, roomId: id }),
+			{
+				loading: 'A guardar a sua questão...',
+				success: (
+					<div>
+						A sua questão foi <b>gravada com sucesso!</b>
+					</div>
+				),
+				error: <b>Ocorreu um erro ao gravar a sua questão.</b>
+			},
+			{
+				duration: 5000
+			}
+		);
+		// } catch (error) {
+		// 	toast.error(
+		// 		'Ocorreu um erro ao enviar a sua questão! Tente novamente mais tarde.',
+		// 		{
+		// 			duration: 5000
+		// 		}
+		// 	);
+		// }
 
 		setNewQuestion('');
 	};
 
 	return (
 		<Container>
-			<Toaster position='top-right' reverseOrder={false} />
-
 			<Header>
 				<Content>
 					<Logo />
@@ -171,15 +132,19 @@ const Room = () => {
 					</FormFooter>
 				</QuestionForm>
 
-				<QuestionsList>
+				<QuestionList>
 					{questions.map((question) => (
 						<QuestionCard
 							key={question.id}
 							question={question.content}
 							user={question.author}
-						/>
+						>
+							<IconButton>
+								<BiLike />
+							</IconButton>
+						</QuestionCard>
 					))}
-				</QuestionsList>
+				</QuestionList>
 			</Main>
 		</Container>
 	);

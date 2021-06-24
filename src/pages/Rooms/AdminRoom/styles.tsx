@@ -1,6 +1,6 @@
 import { flexAlignment, flexSettings } from 'assets/styles/mixins';
 import Letmeask from 'components/Letmeask';
-import { shade, tint } from 'polished';
+import { shade } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -27,7 +27,11 @@ export const Content = styled.div`
 	div {
 		${flexSettings()};
 		${flexAlignment('center')};
-		gap: 10px;
+		gap: 16px;
+
+		> button {
+			height: 40px;
+		}
 	}
 `;
 
@@ -62,66 +66,6 @@ export const RoomTitle = styled.div`
 		color: ${({ theme }) => theme.colors.white};
 		font-size: 14px;
 		font-weight: 500;
-	}
-`;
-
-export const QuestionForm = styled.form`
-	> textarea {
-		width: 100%;
-		min-height: 130px;
-
-		padding: 16px;
-		border-radius: 8px;
-
-		background-color: ${({ theme }) => theme.colors.boxBackground};
-		box-shadow: ${({ theme }) => theme.shadows.textarea};
-		color: ${({ theme }) => theme.colors.text};
-
-		resize: vertical;
-
-		&::placeholder,
-		&:-ms-input-placeholder,
-		&::-ms-input-placeholder {
-			color: ${({ theme }) =>
-				theme.title === 'dark'
-					? theme.colors.gray[50]
-					: theme.colors.gray[500]};
-		}
-	}
-`;
-
-export const FormFooter = styled.div`
-	${flexSettings()};
-	${flexAlignment('center', 'space-between')};
-
-	margin-top: 16px;
-
-	> span {
-		font-size: 14px;
-		color: ${({ theme }) =>
-			theme.title === 'dark'
-				? theme.colors.gray[200]
-				: theme.colors.gray[500]};
-		font-weight: 500;
-
-		> button {
-			box-shadow: none;
-
-			color: ${({ theme }) => theme.colors.primary};
-			text-decoration: underline;
-			background-color: transparent;
-			font-size: 14px;
-			font-weight: 500;
-
-			cursor: pointer;
-
-			&:hover {
-				color: ${({ theme }) =>
-					theme.title === 'dark'
-						? tint(0.25, theme.colors.primary)
-						: shade(0.25, theme.colors.primary)};
-			}
-		}
 	}
 `;
 

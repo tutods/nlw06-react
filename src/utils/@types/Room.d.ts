@@ -22,3 +22,13 @@ export type VectorQuestionType = Record<
 		isHighlighted: boolean;
 	}
 >;
+
+export type VectorRoomType = Record<
+	string,
+	{
+		authorId: string;
+		code: string;
+		title: string;
+		questions?: QuestionType[];
+	}
+>;

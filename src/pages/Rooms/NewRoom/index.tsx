@@ -1,11 +1,9 @@
 import Button from 'components/buttons/Button';
 import AuthLayout from 'layouts/AuthLayout';
 import { FormEvent, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { Link, useHistory } from 'react-router-dom';
-import { generateCode } from 'utils/functions/generateCode';
-import { useAuth } from 'utils/hooks/useAuth';
-import { database } from 'utils/services/firebase';
+import { useRoom } from 'utils/hooks/useRoom';
 import {
 	BottomParagraph,
 	Container,
@@ -15,7 +13,7 @@ import {
 } from './styles';
 
 const NewRoom = () => {
-	const { user } = useAuth();
+	const { createNewRoom } = useRoom();
 
 	const history = useHistory();
 
@@ -24,27 +22,38 @@ const NewRoom = () => {
 	const handleCreateRoom = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		if (roomName.trim() === '') {
-			toast.error('O nome da sala introduzido é inválido!', {
-				duration: 5000
-			});
-			return;
+		try {
+			toast
+				.promise(
+					createNewRoom(roomName),
+					{
+						loading: 'A guardar a sua questão...',
+						success: (
+							<div>
+								A sua questão foi <b>gravada com sucesso!</b>
+							</div>
+						),
+						error: <b>Ocorreu um erro ao gravar a sua questão.</b>
+					},
+					{
+						duration: 5000
+					}
+				)
+				.then((res) => {
+					history.push(`/rooms/${res}`);
+				});
+		} catch (error) {
+			toast.error(
+				'Ocorreu um erro ao criar a sala desejada. Tente novamente mais tarde.',
+				{
+					duration: 5000
+				}
+			);
 		}
-
-		const roomRef = database.ref('rooms');
-
-		const firebaseRoom = await roomRef.push({
-			title: roomName,
-			authorId: user?.id,
-			code: generateCode()
-		});
-
-		history.push(`/rooms/${firebaseRoom.key}`);
 	};
 
 	return (
 		<AuthLayout>
-			<Toaster position='top-right' reverseOrder={false} />
 			<Container>
 				<Logo />
 

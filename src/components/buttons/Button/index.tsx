@@ -4,11 +4,16 @@ import { ButtonContainer } from './styles';
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 	children: ReactNode;
 	icon?: ReactNode;
+	variant?: 'outline';
 };
 
-const Button = ({ children, icon, ...props }: Props) => {
+const Button = ({ children, icon, variant, ...props }: Props) => {
 	return (
-		<ButtonContainer haveIcon={icon !== undefined} {...props}>
+		<ButtonContainer
+			variant={variant}
+			haveIcon={icon !== undefined}
+			{...props}
+		>
 			{icon && icon}
 
 			{children}

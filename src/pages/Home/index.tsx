@@ -1,7 +1,7 @@
 import Button from 'components/buttons/Button';
 import AuthLayout from 'layouts/AuthLayout';
 import { FormEvent, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
 import { FiLogIn } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
@@ -25,13 +25,32 @@ const Home = () => {
 
 	const handleJoinRoom = async (event: FormEvent) => {
 		event.preventDefault();
-
 		if (roomCode.trim() === '') {
 			toast.error('O código de sala introduzido é inválido!', {
 				duration: 5000
 			});
 			return;
 		}
+
+		// await database
+		// 	.ref('rooms')
+		// 	.orderByChild('code')
+		// 	.equalTo(roomCode)
+		// 	.once('value', function (snapshot) {
+		// 		if (!snapshot.exists()) {
+		// 			toast.error(`O código ${roomCode} é inválido!`);
+		// 			return;
+		// 		}
+
+		// 		const roomData: VectorRoomType = snapshot.val();
+
+		// 		const room = Object.entries(roomData).map(([key, value]) => {
+		// 			return {
+		// 				id: key,
+		// 				code: value.code
+		// 			};
+		// 		});
+		// 	});
 
 		const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
@@ -42,12 +61,11 @@ const Home = () => {
 			return;
 		}
 
-		history.push(`/rooms/${roomCode}`);
+		history.push(`rooms/${roomCode}`);
 	};
 
 	return (
 		<AuthLayout>
-			<Toaster position='top-right' reverseOrder={false} />
 			<Container>
 				<Logo />
 
