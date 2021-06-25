@@ -12,13 +12,11 @@ import {
 	Title
 } from './styles';
 
-type Props = {};
-
 const NotFound = ({ ...props }) => {
 	const history = useHistory();
 
 	return (
-		<Container>
+		<Container {...props}>
 			<Header>
 				<Content>
 					<Logo />

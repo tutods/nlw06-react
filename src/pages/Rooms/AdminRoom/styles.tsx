@@ -43,6 +43,8 @@ export const Main = styled.main`
 	max-width: 800px;
 
 	margin: 0 auto;
+
+	${flexSettings('column')};
 `;
 
 export const RoomTitle = styled.div`
@@ -70,7 +72,7 @@ export const RoomTitle = styled.div`
 `;
 
 export const QuestionList = styled.section`
-	max-height: 70vh;
+	max-height: 80vh;
 
 	margin-top: 50px;
 
@@ -78,4 +80,36 @@ export const QuestionList = styled.section`
 	gap: 10px;
 
 	overflow-y: scroll;
+`;
+
+export const NoQuestions = styled.section`
+	${flexSettings('column')};
+	${flexAlignment('center', 'center')};
+	flex: 1;
+
+	margin: 0 auto;
+
+	> svg {
+		width: 350px;
+
+		margin-bottom: 30px;
+	}
+`;
+
+export const Title = styled.h1`
+	margin-bottom: 10px;
+
+	color: ${({ theme }) => theme.colors.text};
+	font-family: 'Poppins', sans-serif;
+	font-size: 30px;
+	font-weight: 300;
+	text-align: center;
+`;
+
+export const Description = styled.p`
+	color: ${({ theme }) => theme.colors.gray[500]};
+	font-weight: 300;
+	font-size: 20px;
+	text-align: center;
+	line-height: 1.5;
 `;

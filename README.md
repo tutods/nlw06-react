@@ -34,8 +34,10 @@
 <h2 style="font-weight:300">💬 Changes</h2>
 
 -   I'm using **Styled Components** instead **Sass**;
--   In **Home** and **New Room** page, I reuse the layout creating another page with sub-routing (`AuthPages`):
-    -   This way the **Home** and **New Room** only contains de form and logo
+-   In **Home** and **New Room** page, I reuse the layout creating another component with shared layout (`AuthLayout`):
+    -   This way the **Home** and **New Room** only contains de form and logo;
+-   I'm created a Not Found page to error 404;
+-   Add `modifier` prop to `Button` and `IconButton` component;
 
 <br />
 <br />
