@@ -33,8 +33,6 @@ export const AsideTitle = styled.strong`
 `;
 
 export const AsideParagraph = styled.p`
-	/* margin-top: 16px; */
-
 	color: ${({ theme }) => shade(0.1, theme.colors.gray[100])};
 	font-size: 24px;
 	line-height: 32px;
@@ -47,16 +45,6 @@ export const Main = styled.main`
 	${flexAlignment('center', 'center')};
 
 	padding: 32px;
-
-	/* > div {
-		${flexSettings('column')};
-		align-items: stretch;
-
-		width: 100%;
-		max-width: 320px;
-
-		text-align: center;
-	} */
 `;
 
 export const CustomThemeSwitch = styled(ThemeSwitch)`
