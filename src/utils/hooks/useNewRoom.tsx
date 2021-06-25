@@ -1,5 +1,4 @@
 import toast from 'react-hot-toast';
-import { generateCode } from 'utils/functions/generateCode';
 import { database } from 'utils/services/firebase';
 import { useAuth } from './useAuth';
 
@@ -22,8 +21,8 @@ export const useNewRoom = (): NewRoomProps => {
 
 		const firebaseRoom = await roomRef.push({
 			title: name,
-			authorId: user?.id,
-			code: generateCode()
+			authorId: user?.id
+			// code: generateCode()
 		});
 
 		return firebaseRoom.key;

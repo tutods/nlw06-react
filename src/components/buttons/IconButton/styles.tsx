@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 type ButtonProps = {
 	modifier?: 'danger';
+	isActive?: boolean;
 };
 
 export const Button = styled.button<ButtonProps>`
@@ -11,8 +12,29 @@ export const Button = styled.button<ButtonProps>`
 
 	border-radius: 999px;
 
-	background-color: transparent;
-	color: ${({ theme }) => theme.colors.text};
+	${({ theme, modifier, isActive }) => {
+		if (isActive && modifier === 'danger') {
+			return `
+				background-color: transparent;
+				color: ${theme.colors.text};
+			`;
+		} else if (isActive) {
+			return `
+				background-color: ${
+					theme.title === 'dark'
+						? rgba(theme.colors.primary, 0.25)
+						: theme.colors.primary
+				};
+				color: ${theme.colors.white};
+			`;
+		} else {
+			return `
+				background-color: transparent;
+				color: ${theme.colors.text};
+			`;
+		}
+	}};
+
 	text-align: center;
 	line-height: 0;
 	cursor: pointer;

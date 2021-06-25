@@ -155,20 +155,27 @@ const Room = () => {
 							key={question.id}
 							question={question.content}
 							user={question.author}
+							isHighlighted={question.isHighlighted}
+							isAnswered={question.isAnswered}
 						>
-							<IconButtonWithNumber
-								modifier={question.likeId ? 'liked' : undefined}
-								onClick={() =>
-									handleLikeQuestion(
-										question.id,
-										question.likeId
-									)
-								}
-								aria-label='Marcar como gosto'
-							>
-								{question.likeCount > 0 && question.likeCount}
-								<BiLike />
-							</IconButtonWithNumber>
+							{!question.isAnswered && (
+								<IconButtonWithNumber
+									modifier={
+										question.likeId ? 'liked' : undefined
+									}
+									onClick={() =>
+										handleLikeQuestion(
+											question.id,
+											question.likeId
+										)
+									}
+									aria-label='Marcar como gosto'
+								>
+									{question.likeCount > 0 &&
+										question.likeCount}
+									<BiLike />
+								</IconButtonWithNumber>
+							)}
 						</QuestionCard>
 					))}
 				</QuestionList>

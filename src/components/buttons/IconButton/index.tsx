@@ -4,11 +4,12 @@ import { Button } from './styles';
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 	children: ReactNode;
 	modifier?: 'danger';
+	isActive?: boolean;
 };
 
-const IconButton = ({ children, modifier, ...props }: Props) => {
+const IconButton = ({ children, modifier, isActive, ...props }: Props) => {
 	return (
-		<Button modifier={modifier} {...props}>
+		<Button modifier={modifier} isActive={isActive} {...props}>
 			{children}
 		</Button>
 	);

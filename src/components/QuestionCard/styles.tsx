@@ -1,7 +1,13 @@
 import { flexAlignment, flexSettings } from 'assets/styles/mixins';
+import { rgba, shade, tint } from 'polished';
 import styled from 'styled-components';
 
-export const Container = styled.div`
+type ContainerProps = {
+	isAnswered?: boolean;
+	isHighlighted?: boolean;
+};
+
+export const Container = styled.div<ContainerProps>`
 	min-height: 150px;
 
 	${flexSettings('column')};
@@ -12,6 +18,25 @@ export const Container = styled.div`
 	box-shadow: ${({ theme }) => theme.shadows.default};
 
 	background-color: ${({ theme }) => theme.colors.boxBackground};
+
+	${({ theme, isHighlighted, isAnswered }) => {
+		if (isAnswered) {
+			return `
+				background-color: ${
+					theme.title === 'light'
+						? shade(0.05, theme.colors.gray[200])
+						: tint(0.15, theme.colors.boxBackground)
+				};
+			`;
+		}
+
+		if (isHighlighted) {
+			return `
+				background-color: ${rgba(theme.colors.primary, 0.15)};
+				border: 1px solid ${theme.colors.primary};
+			`;
+		}
+	}}
 `;
 
 export const Question = styled.p`

@@ -7,13 +7,26 @@ type Props = {
 		avatar: string;
 		name: string;
 	};
+	isAnswered?: boolean;
+	isHighlighted?: boolean;
 	question: string;
 	children: ReactNode;
 };
 
-const QuestionCard = ({ user, question, children, ...props }: Props) => {
+const QuestionCard = ({
+	user,
+	question,
+	isAnswered = false,
+	isHighlighted = false,
+	children,
+	...props
+}: Props) => {
 	return (
-		<Container {...props}>
+		<Container
+			{...props}
+			isAnswered={isAnswered || false}
+			isHighlighted={isHighlighted || false}
+		>
 			<Question>{question}</Question>
 
 			<Footer>

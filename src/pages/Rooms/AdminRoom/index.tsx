@@ -49,6 +49,41 @@ const AdminRoom = () => {
 		}
 	};
 
+	const handleCheckQuestionAsAnswered = async (questionId: string) => {
+		try {
+			await database.ref(`rooms/${id}/questions/${questionId}`).update({
+				isAnswered: true
+			});
+
+			toast.success('Questão marcada como respondida!', {
+				duration: 5000
+			});
+		} catch (error) {
+			toast.error(
+				'Ocorreu um erro a marcar a pergunta desejada como respondida!',
+				{
+					duration: 5000
+				}
+			);
+		}
+	};
+
+	const handleHighlightQuestion = async (questionId: string) => {
+		try {
+			await database.ref(`rooms/${id}/questions/${questionId}`).update({
+				isHighlighted: true
+			});
+
+			toast.success('Questão destacada com sucesso!', {
+				duration: 5000
+			});
+		} catch (error) {
+			toast.error('Ocorreu um erro a destacar a pergunta desejada!', {
+				duration: 5000
+			});
+		}
+	};
+
 	const handleCloseRoom = async () => {
 		if (window.confirm('Tem certeza que quer encerrar esta sala?')) {
 			try {
@@ -101,14 +136,34 @@ const AdminRoom = () => {
 							key={question.id}
 							question={question.content}
 							user={question.author}
+							isHighlighted={question.isHighlighted}
+							isAnswered={question.isAnswered}
 						>
-							<IconButton aria-label='Marcar como resolvido'>
-								<BiCheckCircle />
-							</IconButton>
+							{!question.isAnswered && (
+								<>
+									<IconButton
+										onClick={() =>
+											handleCheckQuestionAsAnswered(
+												question.id
+											)
+										}
+										isActive={question.isAnswered}
+										aria-label='Marcar como respondida'
+									>
+										<BiCheckCircle />
+									</IconButton>
 
-							<IconButton aria-label='Marcar como respondido'>
-								<BiMessage />
-							</IconButton>
+									<IconButton
+										onClick={() =>
+											handleHighlightQuestion(question.id)
+										}
+										isActive={question.isHighlighted}
+										aria-label='Marcar como destacada'
+									>
+										<BiMessage />
+									</IconButton>
+								</>
+							)}
 
 							<IconButton
 								onClick={() =>
