@@ -31,5 +31,5 @@ export const Footer = styled.footer`
 export const Actions = styled.div`
 	${flexSettings()};
 	${flexAlignment('center')};
-	gap: 10px;
+	gap: 5px;
 `;

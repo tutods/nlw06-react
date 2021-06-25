@@ -54,7 +54,7 @@ const Home = () => {
 
 		const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
-		if (!roomRef.exists()) {
+		if (!roomRef.exists() || roomRef.val().closedAt) {
 			toast.error('O código de sala introduzido é inválido!', {
 				duration: 5000
 			});

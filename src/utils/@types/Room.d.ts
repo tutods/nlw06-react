@@ -6,11 +6,13 @@ export type RoomType = {
 };
 
 export type QuestionType = {
-	id?: string;
+	id: string;
 	author: { avatar: string; name: string };
 	content: string;
 	isAnswered: boolean;
 	isHighlighted: boolean;
+	likeCount: number;
+	likeId?: string;
 };
 
 export type VectorQuestionType = Record<
@@ -20,6 +22,8 @@ export type VectorQuestionType = Record<
 		content: string;
 		isAnswered: boolean;
 		isHighlighted: boolean;
+		likes: Record<string, { authorId: string }>;
+		likeId?: string;
 	}
 >;
 

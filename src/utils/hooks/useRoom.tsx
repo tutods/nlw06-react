@@ -25,10 +25,6 @@ type RoomHookProps = {
 };
 
 export const useRoom = (id?: string): RoomHookProps => {
-	// const context = useContext(RoomContext);
-
-	// return context;
-
 	const [questions, setQuestions] = useState<QuestionType[]>([]);
 	const [title, setTitle] = useState('');
 
@@ -54,50 +50,13 @@ export const useRoom = (id?: string): RoomHookProps => {
 		return await firebaseRoom.key;
 	};
 
-	// const loadQuestions = async ({ id }: LoadQuestionsProps) => {
-	// 	console.log('Vamos!!');
-
-	// 	const roomRef = database.ref(`rooms/${id}`);
-
-	// 	roomRef.on('value', (room) => {
-	// 		const databaseRoom = room.val();
-
-	// 		if (!room.exists()) {
-	// 			toast.error(`Sala com o código ${id} não existe!`, {
-	// 				duration: 5000
-	// 			});
-	// 			history.push('/');
-
-	// 			return;
-	// 		}
-
-	// 		const firebaseQuestions: VectorQuestionType =
-	// 			databaseRoom.questions ?? {};
-
-	// 		const parsedQuestions = Object.entries(firebaseQuestions).map(
-	// 			([key, value]) => {
-	// 				return {
-	// 					id: key,
-	// 					content: value.content,
-	// 					author: value.author,
-	// 					isHighlighted: value.isHighlighted,
-	// 					isAnswered: value.isAnswered
-	// 				};
-	// 			}
-	// 		);
-
-	// 		setTitle(databaseRoom.title);
-	// 		setQuestions(parsedQuestions);
-	// 	});
-	// };
-
 	useEffect(() => {
 		const roomRef = database.ref(`rooms/${id}`);
 
 		roomRef.on('value', (room) => {
 			const databaseRoom = room.val();
 
-			if (!room.exists()) {
+			if (!room.exists() || databaseRoom.closedAt) {
 				toast.error(`Sala com o código ${id} não existe!`, {
 					duration: 5000
 				});
@@ -116,7 +75,11 @@ export const useRoom = (id?: string): RoomHookProps => {
 						content: value.content,
 						author: value.author,
 						isHighlighted: value.isHighlighted,
-						isAnswered: value.isAnswered
+						isAnswered: value.isAnswered,
+						likeCount: Object.values(value.likes ?? {}).length,
+						likeId: Object.entries(value.likes ?? {}).find(
+							([key, like]) => like.authorId === user?.id
+						)?.[0]
 					};
 				}
 			);
@@ -124,7 +87,11 @@ export const useRoom = (id?: string): RoomHookProps => {
 			setTitle(databaseRoom.title);
 			setQuestions(parsedQuestions);
 		});
-	}, [id, history]);
+
+		return () => {
+			roomRef.off();
+		};
+	}, [id, history, user?.id]);
 
 	const saveNewQuestion = async ({ question, roomId }: NewQuestionProps) => {
 		if (!user) {

@@ -3,10 +3,15 @@ import { Button } from './styles';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 	children: ReactNode;
-	modifier?: 'danger';
+	modifier?: 'liked';
 };
 
-const IconButton = ({ children, modifier, ...props }: Props) => {
+const IconButtonWithNumber = ({
+	children,
+	modifier,
+	disabled,
+	...props
+}: Props) => {
 	return (
 		<Button modifier={modifier} {...props}>
 			{children}
@@ -14,4 +19,4 @@ const IconButton = ({ children, modifier, ...props }: Props) => {
 	);
 };
 
-export default IconButton;
+export default IconButtonWithNumber;

@@ -1,7 +1,7 @@
 import Avatar from 'components/Avatar';
 import Button from 'components/buttons/Button';
 import CodeButton from 'components/buttons/CodeButton';
-import IconButton from 'components/buttons/IconButton';
+import IconButtonWithNumber from 'components/buttons/IconButtonWithNumber';
 import QuestionCard from 'components/QuestionCard';
 import { ThemeSwitch } from 'components/ThemeSwitch';
 import { FormEvent, useState } from 'react';
@@ -11,6 +11,7 @@ import { IoMdPaperPlane } from 'react-icons/io';
 import { useParams } from 'react-router-dom';
 import { useAuth } from 'utils/hooks/useAuth';
 import { useRoom } from 'utils/hooks/useRoom';
+import { database } from 'utils/services/firebase';
 import {
 	Container,
 	Content,
@@ -56,7 +57,6 @@ const Room = () => {
 			return;
 		}
 
-		// try {
 		toast.promise(
 			saveNewQuestion({ question: newQuestion, roomId: id }),
 			{
@@ -72,16 +72,33 @@ const Room = () => {
 				duration: 5000
 			}
 		);
-		// } catch (error) {
-		// 	toast.error(
-		// 		'Ocorreu um erro ao enviar a sua questão! Tente novamente mais tarde.',
-		// 		{
-		// 			duration: 5000
-		// 		}
-		// 	);
-		// }
 
 		setNewQuestion('');
+	};
+
+	const handleLikeQuestion = async (
+		questionId: string,
+		likeId: string | undefined
+	) => {
+		if (likeId) {
+			await database
+				.ref(`rooms/${id}/questions/${questionId}/likes/${likeId}`)
+				.remove();
+
+			toast.success('Like removido com sucesso!', {
+				duration: 5000
+			});
+
+			return;
+		}
+
+		await database.ref(`rooms/${id}/questions/${questionId}/likes`).push({
+			authorId: user?.id
+		});
+
+		toast.success('Like adicionado com sucesso!', {
+			duration: 5000
+		});
 	};
 
 	return (
@@ -139,9 +156,19 @@ const Room = () => {
 							question={question.content}
 							user={question.author}
 						>
-							<IconButton>
+							<IconButtonWithNumber
+								modifier={question.likeId ? 'liked' : undefined}
+								onClick={() =>
+									handleLikeQuestion(
+										question.id,
+										question.likeId
+									)
+								}
+								aria-label='Marcar como gosto'
+							>
+								{question.likeCount > 0 && question.likeCount}
 								<BiLike />
-							</IconButton>
+							</IconButtonWithNumber>
 						</QuestionCard>
 					))}
 				</QuestionList>

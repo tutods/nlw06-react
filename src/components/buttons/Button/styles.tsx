@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 type ButtonContainerProps = {
 	haveIcon: boolean;
-	variant?: 'outline';
+	modifier?: 'outline';
 };
 
 export const ButtonContainer = styled.button<ButtonContainerProps>`
@@ -18,8 +18,8 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
 	padding: 0 32px;
 	border-radius: 8px;
 
-	${({ variant, theme }) => {
-		if (variant === 'outline') {
+	${({ modifier, theme }) => {
+		if (modifier === 'outline') {
 			return `
 				border: 1px solid ${theme.colors.primary};
 				background-color: transparent;
@@ -39,8 +39,8 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
 	transition: background-color 0.35s ease;
 
 	&:not(:disabled):hover {
-		${({ variant, theme }) => {
-			if (variant === 'outline') {
+		${({ modifier, theme }) => {
+			if (modifier === 'outline') {
 				return `
 					background-color: ${rgba(theme.colors.primary, 0.25)};
 					color: ${theme.title === 'dark' ? theme.colors.white : theme.colors.primary};
@@ -54,8 +54,8 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
 	}
 
 	&:disabled {
-		${({ variant, theme }) => {
-			if (variant === 'outline') {
+		${({ modifier, theme }) => {
+			if (modifier === 'outline') {
 				return `
 					background-color: ${rgba(tint(0.25, theme.colors.primary), 0.25)};
 					color: ${
