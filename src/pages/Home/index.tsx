@@ -25,6 +25,7 @@ const Home = () => {
 
 	const handleJoinRoom = async (event: FormEvent) => {
 		event.preventDefault();
+
 		if (roomCode.trim() === '') {
 			toast.error('O código de sala introduzido é inválido!', {
 				duration: 5000

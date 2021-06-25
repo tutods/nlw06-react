@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useHistory } from 'react-router-dom';
 import { QuestionType, VectorQuestionType } from 'utils/@types/Room';
-import { generateCode } from 'utils/functions/generateCode';
 import { database } from 'utils/services/firebase';
 import { useAuth } from './useAuth';
 
@@ -11,15 +10,8 @@ type NewQuestionProps = {
 	question: string;
 };
 
-// type LoadQuestionsProps = {
-// 	id: string;
-// setTitle: (value: string) => void;
-// setQuestions: (questions: QuestionType[]) => void;
-// };
-
 type RoomHookProps = {
 	saveNewQuestion: ({ question, roomId }: NewQuestionProps) => Promise<void>;
-	createNewRoom: (name: string) => Promise<string | null | undefined>;
 	questions: QuestionType[];
 	title: string;
 };
@@ -30,25 +22,6 @@ export const useRoom = (id?: string): RoomHookProps => {
 
 	const { user } = useAuth();
 	const history = useHistory();
-
-	const createNewRoom = async (name: string) => {
-		if (name.trim() === '') {
-			toast.error('O nome da sala introduzido é inválido!', {
-				duration: 5000
-			});
-			return;
-		}
-
-		const roomRef = database.ref('rooms');
-
-		const firebaseRoom = await roomRef.push({
-			title: name,
-			authorId: user?.id,
-			code: generateCode()
-		});
-
-		return await firebaseRoom.key;
-	};
 
 	useEffect(() => {
 		const roomRef = database.ref(`rooms/${id}`);
@@ -117,5 +90,5 @@ export const useRoom = (id?: string): RoomHookProps => {
 		await database.ref(`rooms/${roomId}/questions`).push(questionToInsert);
 	};
 
-	return { saveNewQuestion, questions, title, createNewRoom };
+	return { saveNewQuestion, questions, title };
 };

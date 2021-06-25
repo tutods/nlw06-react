@@ -3,7 +3,7 @@ import AuthLayout from 'layouts/AuthLayout';
 import { FormEvent, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useHistory } from 'react-router-dom';
-import { useRoom } from 'utils/hooks/useRoom';
+import { useNewRoom } from 'utils/hooks/useNewRoom';
 import {
 	BottomParagraph,
 	Container,
@@ -13,7 +13,7 @@ import {
 } from './styles';
 
 const NewRoom = () => {
-	const { createNewRoom } = useRoom();
+	const { createNewRoom } = useNewRoom();
 
 	const history = useHistory();
 
@@ -30,10 +30,10 @@ const NewRoom = () => {
 						loading: 'A guardar a sua questão...',
 						success: (
 							<div>
-								A sua questão foi <b>gravada com sucesso!</b>
+								A sua sala foi <b>criada com sucesso!</b>
 							</div>
 						),
-						error: <b>Ocorreu um erro ao gravar a sua questão.</b>
+						error: <b>Ocorreu um erro ao criar a sala.</b>
 					},
 					{
 						duration: 5000
