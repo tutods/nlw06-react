@@ -9,11 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm install -g yarn
-      - name: yarn install, build and test
+      - name: npm install, build and test
         run: |
-          yarn install
-          yarn build
+          npm install
+          npm run build
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LETMEASK_CC61E }}'
