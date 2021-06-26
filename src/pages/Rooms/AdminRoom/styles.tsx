@@ -4,11 +4,20 @@ import { shade } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
+	width: 100%;
+	height: 100vh;
+
+	${flexSettings('column')};
+
 	overflow: hidden;
 `;
 
 export const Header = styled.header`
-	padding: 24px;
+	max-height: 80px;
+	height: 100%;
+
+	${flexSettings()};
+
 	border-bottom: 1px solid
 		${({ theme }) =>
 			theme.title === 'dark'
@@ -18,20 +27,21 @@ export const Header = styled.header`
 
 export const Content = styled.div`
 	max-width: 1120px;
+	width: 100%;
+	height: 80px;
 
 	${flexSettings()};
 	${flexAlignment('center', 'space-between')};
 
-	margin: 0 auto;
+	padding: 16px 0;
+	box-sizing: border-box;
+	margin-left: auto;
+	margin-right: auto;
 
 	div {
 		${flexSettings()};
 		${flexAlignment('center')};
-		gap: 16px;
-
-		> button {
-			height: 40px;
-		}
+		gap: 10px;
 	}
 `;
 
@@ -40,13 +50,16 @@ export const Logo = styled(Letmeask)`
 `;
 
 export const Main = styled.main`
-	max-width: 800px;
+	flex: 1;
 
-	margin: 0 auto;
+	max-width: 800px;
+	width: 100%;
+	height: calc(100vh - 80px);
 
 	${flexSettings('column')};
-`;
 
+	margin: 0 auto;
+`;
 export const RoomTitle = styled.div`
 	margin: 32px 0 24px;
 	${flexSettings()};
@@ -72,9 +85,10 @@ export const RoomTitle = styled.div`
 `;
 
 export const QuestionList = styled.section`
-	max-height: 80vh;
+	flex: 1;
 
 	margin-top: 50px;
+	padding-bottom: 10px;
 
 	${flexSettings('column')};
 	gap: 10px;

@@ -4,11 +4,20 @@ import { shade, tint } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
+	width: 100%;
+	height: 100vh;
+
+	${flexSettings('column')};
+
 	overflow: hidden;
 `;
 
 export const Header = styled.header`
-	padding: 24px;
+	max-height: 80px;
+	height: 100%;
+
+	${flexSettings()};
+
 	border-bottom: 1px solid
 		${({ theme }) =>
 			theme.title === 'dark'
@@ -18,11 +27,16 @@ export const Header = styled.header`
 
 export const Content = styled.div`
 	max-width: 1120px;
+	width: 100%;
+	height: 80px;
 
 	${flexSettings()};
 	${flexAlignment('center', 'space-between')};
 
-	margin: 0 auto;
+	padding: 16px 0;
+	box-sizing: border-box;
+	margin-left: auto;
+	margin-right: auto;
 
 	div {
 		${flexSettings()};
@@ -36,7 +50,13 @@ export const Logo = styled(Letmeask)`
 `;
 
 export const Main = styled.main`
+	flex: 1;
+
 	max-width: 800px;
+	width: 100%;
+	height: calc(100vh - 80px);
+
+	${flexSettings('column')};
 
 	margin: 0 auto;
 `;
@@ -126,9 +146,10 @@ export const FormFooter = styled.div`
 `;
 
 export const QuestionList = styled.section`
-	max-height: 70vh;
+	flex: 1;
 
 	margin-top: 50px;
+	margin-bottom: 20px;
 
 	${flexSettings('column')};
 	gap: 10px;
