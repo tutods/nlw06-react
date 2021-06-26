@@ -11,6 +11,10 @@ const SEO = ({ title, image, description, ...props }: Props) => {
 		<Helmet>
 			<title>{title && `${title} | `}Letmeask</title>
 			<meta
+				property='og:title'
+				content={`${title && `${title} | `}Letmeask`}
+			/>
+			<meta
 				name='description'
 				content={
 					description
@@ -18,7 +22,6 @@ const SEO = ({ title, image, description, ...props }: Props) => {
 						: 'Aplicação desenvolvida no NLW05 da Rocketseat'
 				}
 			/>
-
 			<meta
 				property='og:image'
 				content={image || '/media/Letmeask.jpg'}
@@ -27,6 +30,15 @@ const SEO = ({ title, image, description, ...props }: Props) => {
 				property='og:title'
 				content={`${title && `${title} | `}Letmeask`}
 			/>
+			<meta
+				property='og:description'
+				content={
+					description
+						? description
+						: 'Aplicação desenvolvida no NLW05 da Rocketseat'
+				}
+			/>
+			<meta property='og:url' content='https://letmeask-cc61e.web.app/' />
 		</Helmet>
 	);
 };
