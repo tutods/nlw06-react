@@ -49,6 +49,7 @@
 -   I'm created a Not Found page to error 404;
 -   Add `modifier` prop to `Button` and `IconButton` component;
 -   Add `react-toaster` to show error and success messages;
+-   Add `react-icons` to add icons in `SVG` instead using `img` tag;
 
 <br />
 <br />
