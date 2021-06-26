@@ -99,6 +99,10 @@ export const QuestionForm = styled.form`
 
 		resize: vertical;
 
+		&:disabled {
+			cursor: not-allowed;
+		}
+
 		&::placeholder,
 		&:-ms-input-placeholder,
 		&::-ms-input-placeholder {
