@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: 'NPM: Install Dependencies'
+      - name: npm - install dependencies
         run: npm install
-      - name: 'Prettier: Format all code'
+      - name: prettier - format all code
         run: npm run format
-      - name: 'NPM: Build Project'
+      - name: npm - build project
         run: npm run build
         env:
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
