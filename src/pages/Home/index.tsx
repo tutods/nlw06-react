@@ -14,8 +14,6 @@ const Home = () => {
 	const [roomCode, setRoomCode] = useState<string>('');
 	const history = useHistory();
 
-	console.log(process.env.REACT_APP_API_KEY);
-
 	const handleCreateRoom = async () => {
 		if (!user) {
 			await signInWithGoogle();
