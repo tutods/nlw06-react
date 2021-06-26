@@ -23,6 +23,7 @@ jobs:
           REACT_APP_STORAGE_BUCKET: ${{ secrets.REACT_APP_STORAGE_BUCKET }}
           REACT_APP_SENDER_ID: ${{ secrets.REACT_APP_SENDER_ID }}
           REACT_APP_APP_ID: ${{ secrets.REACT_APP_APP_ID }}
+          PUBLIC_URL: ${{ secrets.PUBLIC_URL }}
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LETMEASK_CC61E }}'
