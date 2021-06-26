@@ -33,26 +33,6 @@ const Home = () => {
 			return;
 		}
 
-		// await database
-		// 	.ref('rooms')
-		// 	.orderByChild('code')
-		// 	.equalTo(roomCode)
-		// 	.once('value', function (snapshot) {
-		// 		if (!snapshot.exists()) {
-		// 			toast.error(`O código ${roomCode} é inválido!`);
-		// 			return;
-		// 		}
-
-		// 		const roomData: VectorRoomType = snapshot.val();
-
-		// 		const room = Object.entries(roomData).map(([key, value]) => {
-		// 			return {
-		// 				id: key,
-		// 				code: value.code
-		// 			};
-		// 		});
-		// 	});
-
 		const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
 		if (!roomRef.exists() || roomRef.val().closedAt) {
