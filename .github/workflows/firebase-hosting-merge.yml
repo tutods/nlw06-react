@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: 'NPM: Install Dependencies'
         run: npm install
-      - name: 'Prettier: Format all code'
+      - name: prettier
         run: npm run format
       - name: 'NPM: Build Project'
         run: npm run build
