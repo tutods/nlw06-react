@@ -8,11 +8,11 @@ type Props = {
 
 const SEO = ({ title, image, description, ...props }: Props) => {
 	return (
-		<Helmet>
-			<title>{title && `${title} | `}Letmeask</title>
+		<Helmet titleTemplate='Letmeask | %s' defaultTitle='Página Inicial'>
+			<title>{title}</title>
 			<meta
 				property='og:title'
-				content={`${title && `${title} | `}Letmeask`}
+				content={`Letmeask${title && ` | ${title}`}`}
 			/>
 			<meta
 				name='description'
