@@ -31,6 +31,15 @@
 <br />
 <br />
 
+<h2 style="font-weight:300">🌐 Deploy:</h2>
+
+<a href="https://letmeask-cc61e.web.app/">
+  <img src="https://img.shields.io/badge/firebase%20-%23FFCA28.svg?&style=for-the-badge&logo=firebase&logoColor=black" alt='Deploy'/>
+</a>
+
+<br />
+<br />
+
 <h2 style="font-weight:300">💬 Changes</h2>
 
 -   I'm using **Styled Components** instead **Sass**;
