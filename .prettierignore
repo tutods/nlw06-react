@@ -3,4 +3,6 @@ package.json
 build/
 dist/
 *.sass
-*.json
+package.json
+*.yml
+*.yaml

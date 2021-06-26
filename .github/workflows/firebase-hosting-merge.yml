@@ -11,10 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: npm install, build and test
-        run: |
-          npm install
-          npm run build
+      - name: npm - install dependencies
+        run: npm install
+      - name: prettier - format all code
+        run: npm run format
+      - name: npm - build project
+        run: npm run build
         env:
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
           REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
