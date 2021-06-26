@@ -31,7 +31,7 @@ type RoomParams = {
 const Room = () => {
 	// Hooks
 	const { id } = useParams<RoomParams>();
-	const { user } = useAuth();
+	const { user, signInWithGoogle } = useAuth();
 	const { saveNewQuestion, questions, title } = useRoom(id);
 
 	// States
@@ -125,6 +125,7 @@ const Room = () => {
 
 				<QuestionForm onSubmit={handleSendQuestion}>
 					<textarea
+						disabled={!user}
 						placeholder='O que deseja perguntar?'
 						value={newQuestion}
 						onChange={(event) => setNewQuestion(event.target.value)}
@@ -133,7 +134,12 @@ const Room = () => {
 						{!user ? (
 							<span>
 								Para enviar uma pergunta,{' '}
-								<button>faça seu login</button>
+								<button
+									type={'button'}
+									onClick={signInWithGoogle}
+								>
+									faça seu login
+								</button>
 							</span>
 						) : (
 							<Avatar name={user.name} avatar={user.avatar} />
