@@ -1,3 +1,4 @@
+import SEO from 'components/SEO';
 import { AuthContextProvider } from 'contexts/AuthContext';
 import { ThemeModeProvider } from 'contexts/ThemeModeContext';
 import App from 'pages/App';
@@ -9,10 +10,9 @@ import 'utils/services/firebase';
 ReactDOM.render(
 	<ThemeModeProvider>
 		<AuthContextProvider>
-			{/* <RoomContextProvider> */}
+			<SEO />
 			<Toaster position='top-right' reverseOrder={false} />
 			<App />
-			{/* </RoomContextProvider> */}
 		</AuthContextProvider>
 	</ThemeModeProvider>,
 	document.getElementById('root')

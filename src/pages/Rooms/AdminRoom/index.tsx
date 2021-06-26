@@ -2,6 +2,7 @@ import Button from 'components/buttons/Button';
 import CodeButton from 'components/buttons/CodeButton';
 import IconButton from 'components/buttons/IconButton';
 import QuestionCard from 'components/QuestionCard';
+import SEO from 'components/SEO';
 import { ThemeSwitch } from 'components/ThemeSwitch';
 import toast from 'react-hot-toast';
 import { BiCheckCircle, BiMessage, BiTrash } from 'react-icons/bi';
@@ -106,6 +107,7 @@ const AdminRoom = () => {
 
 	return (
 		<Container>
+			<SEO title={`Administraçaão Sala ${title}`} />
 			<Header>
 				<Content>
 					<Logo />

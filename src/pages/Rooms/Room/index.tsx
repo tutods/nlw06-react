@@ -3,6 +3,7 @@ import Button from 'components/buttons/Button';
 import CodeButton from 'components/buttons/CodeButton';
 import IconButtonWithNumber from 'components/buttons/IconButtonWithNumber';
 import QuestionCard from 'components/QuestionCard';
+import SEO from 'components/SEO';
 import { ThemeSwitch } from 'components/ThemeSwitch';
 import { FormEvent, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -103,6 +104,8 @@ const Room = () => {
 
 	return (
 		<Container>
+			<SEO title={`Sala ${title}`} />
+
 			<Header>
 				<Content>
 					<Logo />

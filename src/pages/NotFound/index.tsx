@@ -1,4 +1,5 @@
 import Button from 'components/buttons/Button';
+import SEO from 'components/SEO';
 import { ThemeSwitch } from 'components/ThemeSwitch';
 import { BiHome } from 'react-icons/bi';
 import { useHistory } from 'react-router-dom';
@@ -17,6 +18,8 @@ const NotFound = ({ ...props }) => {
 
 	return (
 		<Container {...props}>
+			<SEO title={`Error 404`} />
+
 			<Header>
 				<Content>
 					<Logo />

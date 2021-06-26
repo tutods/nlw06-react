@@ -1,4 +1,5 @@
 import Button from 'components/buttons/Button';
+import SEO from 'components/SEO';
 import AuthLayout from 'layouts/AuthLayout';
 import { FormEvent, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -54,6 +55,7 @@ const NewRoom = () => {
 
 	return (
 		<AuthLayout>
+			<SEO title={`Criar Nova Sala`} />
 			<Container>
 				<Logo />
 
