@@ -25,7 +25,7 @@ const SEO = ({ title, image, description, ...props }: Props) => {
 			<meta
 				property='og:image'
 				content={
-					image || 'https://letmeask-cc61e.web.app/media/Letmeask.jpg'
+					image || 'https://letmeask-cc61e.web.app/media/letmeask.jpg'
 				}
 			/>
 			<meta
