@@ -48,6 +48,7 @@
     -   This way the **Home** and **New Room** only contains de form and logo;
 -   I'm created a Not Found page to error 404;
 -   Add `modifier` prop to `Button` and `IconButton` component;
+-   Add `react-toaster` to show error and success messages;
 
 <br />
 <br />
