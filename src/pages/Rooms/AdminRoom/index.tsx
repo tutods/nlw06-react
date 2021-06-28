@@ -132,53 +132,57 @@ const AdminRoom = () => {
 					)}
 				</RoomTitle>
 
-				<QuestionList>
-					{questions.map((question) => (
-						<QuestionCard
-							key={question.id}
-							question={question.content}
-							user={question.author}
-							isHighlighted={question.isHighlighted}
-							isAnswered={question.isAnswered}
-						>
-							{!question.isAnswered && (
-								<>
-									<IconButton
-										onClick={() =>
-											handleCheckQuestionAsAnswered(
-												question.id
-											)
-										}
-										isActive={question.isAnswered}
-										aria-label='Marcar como respondida'
-									>
-										<BiCheckCircle />
-									</IconButton>
-
-									<IconButton
-										onClick={() =>
-											handleHighlightQuestion(question.id)
-										}
-										isActive={question.isHighlighted}
-										aria-label='Marcar como destacada'
-									>
-										<BiMessage />
-									</IconButton>
-								</>
-							)}
-
-							<IconButton
-								onClick={() =>
-									handleDeleteQuestion(question.id)
-								}
-								aria-label='Apagar Questão'
-								modifier={'danger'}
+				{questions.length > 0 && (
+					<QuestionList>
+						{questions.map((question) => (
+							<QuestionCard
+								key={question.id}
+								question={question.content}
+								user={question.author}
+								isHighlighted={question.isHighlighted}
+								isAnswered={question.isAnswered}
 							>
-								<BiTrash />
-							</IconButton>
-						</QuestionCard>
-					))}
-				</QuestionList>
+								{!question.isAnswered && (
+									<>
+										<IconButton
+											onClick={() =>
+												handleCheckQuestionAsAnswered(
+													question.id
+												)
+											}
+											isActive={question.isAnswered}
+											aria-label='Marcar como respondida'
+										>
+											<BiCheckCircle />
+										</IconButton>
+
+										<IconButton
+											onClick={() =>
+												handleHighlightQuestion(
+													question.id
+												)
+											}
+											isActive={question.isHighlighted}
+											aria-label='Marcar como destacada'
+										>
+											<BiMessage />
+										</IconButton>
+									</>
+								)}
+
+								<IconButton
+									onClick={() =>
+										handleDeleteQuestion(question.id)
+									}
+									aria-label='Apagar Questão'
+									modifier={'danger'}
+								>
+									<BiTrash />
+								</IconButton>
+							</QuestionCard>
+						))}
+					</QuestionList>
+				)}
 
 				{questions.length === 0 && (
 					<NoQuestions>

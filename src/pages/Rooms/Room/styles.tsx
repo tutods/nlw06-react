@@ -160,3 +160,35 @@ export const QuestionList = styled.section`
 
 	overflow-y: scroll;
 `;
+
+export const NoQuestions = styled.section`
+	${flexSettings('column')};
+	${flexAlignment('center', 'flex-start')};
+	flex: 1;
+
+	padding-top: 50px;
+
+	> svg {
+		width: 350px;
+
+		margin-bottom: 30px;
+	}
+`;
+
+export const Title = styled.h1`
+	margin-bottom: 10px;
+
+	color: ${({ theme }) => theme.colors.text};
+	font-family: 'Poppins', sans-serif;
+	font-size: 30px;
+	font-weight: 300;
+	text-align: center;
+`;
+
+export const Description = styled.p`
+	color: ${({ theme }) => theme.colors.gray[500]};
+	font-weight: 300;
+	font-size: 20px;
+	text-align: center;
+	line-height: 1.5;
+`;
