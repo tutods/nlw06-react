@@ -15,7 +15,8 @@
 		"format": "prettier -w .",
 		"dev": "BROWSER=none react-scripts start",
 		"build": "react-scripts build",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"lint": "eslint ./ --ignore-path .gitignore"
 	},
 	"dependencies": {
 		"firebase": "^10.1.0",
@@ -32,12 +33,19 @@
 		"styled-components": "^6.0.7"
 	},
 	"devDependencies": {
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"@tutods/eslint-config": "^1.12.0-beta.3",
+		"@tutods/prettier-config": "^0.2.0",
 		"@types/node": "^20.5.0",
 		"@types/react": "^18.2.20",
 		"@types/react-dom": "^18.2.7",
 		"@types/react-helmet": "^6.1.1",
 		"@types/react-router-dom": "^5.1.7",
 		"@types/styled-components": "^5.1.10",
+		"eslint": "^8.47.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-prettier": "^5.0.0",
+		"eslint-plugin-simple-import-sort": "^10.0.0",
 		"husky": "^8.0.3",
 		"lint-staged": "^14.0.0",
 		"prettier": "^3.0.2",

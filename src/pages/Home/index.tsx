@@ -10,67 +10,67 @@ import { database } from 'utils/services/firebase';
 import { Container, Divider, EnterForm, Logo, RoomButton } from './styles';
 
 const Home = () => {
-	const { user, signInWithGoogle } = useAuth();
-	const [roomCode, setRoomCode] = useState<string>('');
-	const history = useHistory();
+  const { user, signInWithGoogle } = useAuth();
+  const [roomCode, setRoomCode] = useState<string>('');
+  const history = useHistory();
 
-	const handleCreateRoom = async () => {
-		if (!user) {
-			await signInWithGoogle();
-		}
+  const handleCreateRoom = async () => {
+    if (!user) {
+      await signInWithGoogle();
+    }
 
-		// Redirect after Sign In
-		history.push('/rooms/new');
-	};
+    // Redirect after Sign In
+    history.push('/rooms/new');
+  };
 
-	const handleJoinRoom = async (event: FormEvent) => {
-		event.preventDefault();
+  const handleJoinRoom = async (event: FormEvent) => {
+    event.preventDefault();
 
-		if (roomCode.trim() === '') {
-			toast.error('O código de sala introduzido é inválido!', {
-				duration: 5000
-			});
-			return;
-		}
+    if (roomCode.trim() === '') {
+      toast.error('O código de sala introduzido é inválido!', {
+        duration: 5000,
+      });
+      return;
+    }
 
-		const roomRef = await database.ref(`rooms/${roomCode}`).get();
+    const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
-		if (!roomRef.exists() || roomRef.val().closedAt) {
-			toast.error('O código de sala introduzido é inválido!', {
-				duration: 5000
-			});
-			return;
-		}
+    if (!roomRef.exists() || roomRef.val().closedAt) {
+      toast.error('O código de sala introduzido é inválido!', {
+        duration: 5000,
+      });
+      return;
+    }
 
-		history.push(`rooms/${roomCode}`);
-	};
+    history.push(`rooms/${roomCode}`);
+  };
 
-	return (
-		<AuthLayout>
-			<Container>
-				<Logo />
+  return (
+    <AuthLayout>
+      <Container>
+        <Logo />
 
-				<RoomButton onClick={handleCreateRoom}>
-					<FaGoogle />
-					Crie sua sala com o Google
-				</RoomButton>
+        <RoomButton onClick={handleCreateRoom}>
+          <FaGoogle />
+          Crie sua sala com o Google
+        </RoomButton>
 
-				<Divider>ou entre em uma sala</Divider>
+        <Divider>ou entre em uma sala</Divider>
 
-				<EnterForm onSubmit={handleJoinRoom}>
-					<input
-						type='text'
-						placeholder='Digite o código da sala'
-						onChange={(event) => setRoomCode(event.target.value)}
-						value={roomCode}
-					/>
-					<Button type='submit' icon={<FiLogIn />}>
-						Entrar na sala
-					</Button>
-				</EnterForm>
-			</Container>
-		</AuthLayout>
-	);
+        <EnterForm onSubmit={handleJoinRoom}>
+          <input
+            type="text"
+            placeholder="Digite o código da sala"
+            onChange={event => setRoomCode(event.target.value)}
+            value={roomCode}
+          />
+          <Button type="submit" icon={<FiLogIn />}>
+            Entrar na sala
+          </Button>
+        </EnterForm>
+      </Container>
+    </AuthLayout>
+  );
 };
 
 export default Home;

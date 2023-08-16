@@ -1,5 +1,5 @@
 export const flexSettings = (direction = 'row') => {
-	return `
+  return `
 		display: flex;
 
 		${direction && `flex-direction: ${direction}`};
@@ -7,7 +7,7 @@ export const flexSettings = (direction = 'row') => {
 };
 
 export const flexAlignment = (align = 'center', justify = 'flex-start') => {
-	return `
+  return `
 		align-items: ${align};
 
 		${justify && `justify-content: ${justify}`};
@@ -15,7 +15,7 @@ export const flexAlignment = (align = 'center', justify = 'flex-start') => {
 };
 
 export const coverBg = () => {
-	return `
+  return `
 		background-repeat: no-repeat
 		background-size: cover
 		background-position: center

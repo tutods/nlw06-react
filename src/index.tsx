@@ -7,13 +7,16 @@ import ReactDOM from 'react-dom';
 import { Toaster } from 'react-hot-toast';
 import 'utils/services/firebase';
 
-ReactDOM.render(
-	<ThemeModeProvider>
-		<AuthContextProvider>
-			<SEO />
-			<Toaster position='top-right' reverseOrder={false} />
-			<App />
-		</AuthContextProvider>
-	</ThemeModeProvider>,
-	document.getElementById('root')
+import { createRoot } from 'react-dom/client';
+
+const container = document.getElementById('root');
+const root = createRoot(container!);
+root.render(
+  <ThemeModeProvider>
+    <AuthContextProvider>
+      <SEO />
+      <Toaster position="top-right" reverseOrder={false} />
+      <App />
+    </AuthContextProvider>
+  </ThemeModeProvider>,
 );

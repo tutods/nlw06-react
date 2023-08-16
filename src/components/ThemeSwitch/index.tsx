@@ -5,16 +5,16 @@ import { ThemeContext } from 'styled-components';
 import { SwitchTheme } from './styles';
 
 const ThemeSwitch = ({ ...props }) => {
-	const { title } = useContext(ThemeContext);
-	const { toggleTheme } = useContext(ThemeModeContext);
+  const { title } = useContext(ThemeContext);
+  const { toggleTheme } = useContext(ThemeModeContext);
 
-	const icon = title === 'light' ? <FiMoon /> : <FiSun />;
+  const icon = title === 'light' ? <FiMoon /> : <FiSun />;
 
-	return (
-		<SwitchTheme {...props} onClick={() => toggleTheme()}>
-			{icon}
-		</SwitchTheme>
-	);
+  return (
+    <SwitchTheme {...props} onClick={() => toggleTheme()}>
+      {icon}
+    </SwitchTheme>
+  );
 };
 
 export { ThemeSwitch };

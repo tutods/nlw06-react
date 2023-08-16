@@ -42,14 +42,14 @@
 
 <h2 style="font-weight:300">💬 Changes</h2>
 
--   I'm using **Styled Components** instead **Sass**;
--   Use **Prettier** and **Husky Hooks**;
--   In **Home** and **New Room** page, I reuse the layout creating another component with shared layout (`AuthLayout`):
-    -   This way the **Home** and **New Room** only contains de form and logo;
--   I'm created a Not Found page to error 404;
--   Add `modifier` prop to `Button` and `IconButton` component;
--   Add `react-hot-toast` to show error and success messages;
--   Add `react-icons` to add icons in `SVG` instead using `img` tag;
+- I'm using **Styled Components** instead **Sass**;
+- Use **Prettier** and **Husky Hooks**;
+- In **Home** and **New Room** page, I reuse the layout creating another component with shared layout (`AuthLayout`):
+  - This way the **Home** and **New Room** only contains de form and logo;
+- I'm created a Not Found page to error 404;
+- Add `modifier` prop to `Button` and `IconButton` component;
+- Add `react-hot-toast` to show error and success messages;
+- Add `react-icons` to add icons in `SVG` instead using `img` tag;
 
 <br />
 <br />
@@ -64,10 +64,10 @@ In `package.json` add on scripts:
 
 After that run on your terminal:
 
--   **With Yarn:**
-    -   `yarn husky add .husky/pre-commit "yarn lint-staged"`
--   **With NPM:**
-    -   `npx husky add .husky/pre-commit "npm lint-staged`
+- **With Yarn:**
+  - `yarn husky add .husky/pre-commit "yarn lint-staged"`
+- **With NPM:**
+  - `npx husky add .husky/pre-commit "npm lint-staged`
 
 <br /><br />
 

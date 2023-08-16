@@ -5,19 +5,19 @@ import NewRoom from './NewRoom';
 import Room from './Room';
 
 const Rooms = () => {
-	let { path } = useRouteMatch();
+  let { path } = useRouteMatch();
 
-	return (
-		<Switch>
-			<Route path={`${path}/new`} component={NewRoom} />
+  return (
+    <Switch>
+      <Route path={`${path}/new`} component={NewRoom} />
 
-			<Route path={`${path}/admin/:id`} component={AdminRoom} />
+      <Route path={`${path}/admin/:id`} component={AdminRoom} />
 
-			<Route path={`${path}/:id`} component={Room} />
+      <Route path={`${path}/:id`} component={Room} />
 
-			<Route component={NotFound} />
-		</Switch>
-	);
+      <Route component={NotFound} />
+    </Switch>
+  );
 };
 
 export default Rooms;

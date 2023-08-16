@@ -4,101 +4,95 @@ import { shade } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-	${flexSettings('column')};
-	align-items: stretch;
+  ${flexSettings('column')};
+  align-items: stretch;
 
-	width: 100%;
-	max-width: 320px;
+  width: 100%;
+  max-width: 320px;
 
-	text-align: center;
+  text-align: center;
 `;
 
 export const Logo = styled(Letmeask)`
-	width: 150px;
-	height: auto;
+  width: 150px;
+  height: auto;
 
-	align-self: center;
+  align-self: center;
 `;
 
 export const RoomButton = styled.button`
-	${flexSettings()};
-	${flexAlignment('center', 'center')};
-	gap: 10px;
+  ${flexSettings()};
+  ${flexAlignment('center', 'center')};
+  gap: 10px;
 
-	height: 50px;
+  height: 50px;
 
-	margin-top: 64px;
-	border-radius: 8px;
+  margin-top: 64px;
+  border-radius: 8px;
 
-	background-color: ${({ theme }) => theme.colors.google};
-	color: ${({ theme }) => theme.colors.white};
-	font-weight: 400;
-	cursor: pointer;
+  background-color: ${({ theme }) => theme.colors.google};
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: 400;
+  cursor: pointer;
 
-	transition: background-color 0.35s ease;
+  transition: background-color 0.35s ease;
 
-	&:hover {
-		background-color: ${({ theme }) => shade(0.25, theme.colors.google)};
-	}
+  &:hover {
+    background-color: ${({ theme }) => shade(0.25, theme.colors.google)};
+  }
 `;
 
 export const Divider = styled.div`
-	${flexSettings()};
-	${flexAlignment('center')};
+  ${flexSettings()};
+  ${flexAlignment('center')};
 
-	margin: 32px 0;
+  margin: 32px 0;
 
-	font-size: 14px;
-	color: ${({ theme }) =>
-		theme.title === 'light'
-			? theme.colors.gray[500]
-			: theme.colors.gray[200]};
+  font-size: 14px;
+  color: ${({ theme }) =>
+    theme.title === 'light' ? theme.colors.gray[500] : theme.colors.gray[200]};
 
-	&::before {
-		content: '';
-		flex: 1;
-		height: 1px;
-		margin-right: 16px;
-		background: ${({ theme }) =>
-			theme.title === 'light'
-				? theme.colors.gray[500]
-				: theme.colors.gray[200]};
-	}
+  &::before {
+    content: '';
+    flex: 1;
+    height: 1px;
+    margin-right: 16px;
+    background: ${({ theme }) =>
+      theme.title === 'light' ? theme.colors.gray[500] : theme.colors.gray[200]};
+  }
 
-	&::after {
-		content: '';
-		flex: 1;
-		height: 1px;
-		margin-left: 16px;
-		background: ${({ theme }) =>
-			theme.title === 'light'
-				? theme.colors.gray[500]
-				: theme.colors.gray[200]};
-	}
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    margin-left: 16px;
+    background: ${({ theme }) =>
+      theme.title === 'light' ? theme.colors.gray[500] : theme.colors.gray[200]};
+  }
 `;
 
 export const EnterForm = styled.form`
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 
-	${flexSettings('column')}
+  ${flexSettings('column')}
 
-	> * {
-		width: 100%;
-	}
+  > * {
+    width: 100%;
+  }
 
-	input {
-		height: 50px;
+  input {
+    height: 50px;
 
-		border-radius: 8px;
-		padding: 0 16px;
-		border: 1px solid ${({ theme }) => theme.colors.gray[500]};
+    border-radius: 8px;
+    padding: 0 16px;
+    border: 1px solid ${({ theme }) => theme.colors.gray[500]};
 
-		background-color: ${({ theme }) => theme.colors.boxBackground};
-		color: ${({ theme }) => theme.colors.gray[500]};
-	}
+    background-color: ${({ theme }) => theme.colors.boxBackground};
+    color: ${({ theme }) => theme.colors.gray[500]};
+  }
 
-	button {
-		margin-top: 16px;
-	}
+  button {
+    margin-top: 16px;
+  }
 `;

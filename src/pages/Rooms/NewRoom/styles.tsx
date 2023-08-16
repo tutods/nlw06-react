@@ -3,65 +3,63 @@ import Letmeask from 'components/Letmeask';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-	${flexSettings('column')};
-	align-items: stretch;
+  ${flexSettings('column')};
+  align-items: stretch;
 
-	width: 100%;
-	max-width: 320px;
+  width: 100%;
+  max-width: 320px;
 
-	text-align: center;
+  text-align: center;
 `;
 
 export const Logo = styled(Letmeask)`
-	width: 150px;
-	height: auto;
+  width: 150px;
+  height: auto;
 
-	align-self: center;
+  align-self: center;
 `;
 
 export const MainTitle = styled.h2`
-	margin: 64px 0 24px;
+  margin: 64px 0 24px;
 
-	font-size: 24px;
-	font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-family: 'Poppins', sans-serif;
 `;
 
 export const NewRoomForm = styled.form`
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 
-	${flexSettings('column')}
+  ${flexSettings('column')}
 
-	> * {
-		width: 100%;
-	}
+  > * {
+    width: 100%;
+  }
 
-	input {
-		height: 50px;
+  input {
+    height: 50px;
 
-		border-radius: 8px;
-		padding: 0 16px;
-		border: 1px solid ${({ theme }) => theme.colors.gray[500]};
+    border-radius: 8px;
+    padding: 0 16px;
+    border: 1px solid ${({ theme }) => theme.colors.gray[500]};
 
-		background-color: ${({ theme }) => theme.colors.boxBackground};
-		color: ${({ theme }) => theme.colors.gray[500]};
-	}
+    background-color: ${({ theme }) => theme.colors.boxBackground};
+    color: ${({ theme }) => theme.colors.gray[500]};
+  }
 
-	button {
-		margin-top: 16px;
-	}
+  button {
+    margin-top: 16px;
+  }
 `;
 
 export const BottomParagraph = styled.p`
-	margin-top: 16px;
+  margin-top: 16px;
 
-	font-size: 14px;
-	color: ${({ theme }) =>
-		theme.title === 'light'
-			? theme.colors.gray[500]
-			: theme.colors.gray[100]};
+  font-size: 14px;
+  color: ${({ theme }) =>
+    theme.title === 'light' ? theme.colors.gray[500] : theme.colors.gray[100]};
 
-	> a {
-		text-decoration: underline;
-	}
+  > a {
+    text-decoration: underline;
+  }
 `;
